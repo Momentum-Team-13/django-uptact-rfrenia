@@ -3,7 +3,7 @@
 {% block content %}
 <h1>View Contact</h1>
 
-<p><a href="{% url 'add_contact' %}">View Contact</a></p>
+<a href="{% url 'list_contacts' %}">Back to List</a>
 
 <div class="flex flex-wrap">
   <div class="w-33 pa3">
@@ -40,7 +40,7 @@
       <div>{{ contact.birthday }}</div>
     </div>
     {% endif %}
-
+<br>
     {% if contact.note %}
     <div class="flex">
       <div class="pr2"><i</i></div>
@@ -49,8 +49,9 @@
    
     {% endif %}
 
-    
-
+    <a href="{% url 'note_form' pk=contact.pk %}">Make Note</a>
+<br>
+<br>
     {% if notes %}
     <div class="flex">
       {% for note in notes %}
@@ -61,9 +62,10 @@
     {% endif %}
 
     <p>
-      <p><a href="{% url 'note_form' pk=contact.pk %}">View Note</a></p>
-      <a href="{% url 'edit_contact' pk=contact.pk %}">Edit Contact</a><br>    
-      <a class="red" href="{% url 'delete_contact' pk=contact.pk %}">Delete Contact</a>
+    <a href="{% url 'edit_contact' pk=contact.pk %}">Edit Contact</a>
+    <br>  
+    <br> 
+    <a class="red" href="{% url 'delete_contact' pk=contact.pk %}">Delete Contact</a>
     </p>
   </div>
 </div>  
